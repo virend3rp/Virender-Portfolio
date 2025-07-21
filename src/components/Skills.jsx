@@ -34,7 +34,7 @@ const Skills = () => {
             `Medium: ${lcJson.mediumSolved}`,
             `Hard: ${lcJson.hardSolved}`,
           ],
-          link: "https://leetcode.com/virenderparasariya/"
+          link: "https://leetcode.com/Vir3nd3rp/"
         };
 
         // Fetch Codeforces
