@@ -1,15 +1,18 @@
 @import "tailwindcss";
 
 
-body {
-  @apply bg-[#fef3c7] text-[#1f2937]; /* Naruto-inspired warm orange bg with cool slate text */
-  font-family: 'Inter', sans-serif;
-  scroll-behavior: smooth;
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /* Remove overflow: hidden */
+  /* Or set overflow: auto or overflow-x: hidden; overflow-y: auto; */
+  overflow-y: auto; /* allows vertical scroll */
+  overflow-x: hidden; /* hides horizontal scroll if unwanted */
 }
 
-section {
-  @apply py-16 px-6 md:px-20;
-}
+
 
 @keyframes pulse-slow {
   0%, 100% {

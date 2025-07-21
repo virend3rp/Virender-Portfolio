@@ -1,0 +1,153 @@
+.about-youtube-layout {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0f0f0f;
+  color: #f0f0f0;
+  padding: 2rem;
+  gap: 2rem;
+  min-height: 100vh;
+}
+
+.video-section {
+  width: 85%;
+  max-width: 1200px;
+}
+
+.video-player {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  aspect-ratio: 16 / 9;
+  background: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 12px #000;
+}
+
+.slideshow {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  animation: funSlide 12s infinite;
+}
+
+@keyframes funSlide {
+  0% {
+    opacity: 0;
+    transform: scale(1.2) translateX(50%);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateX(-50%);
+  }
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  color: white;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.video-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem 0;
+  color: white;
+  font-size: 18px;
+}
+
+.left-controls button {
+  margin-right: 0.6rem;
+  background: #2a2a2a;
+  border: none;
+  color: #f0f0f0;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.left-controls button:hover {
+  background: #444;
+}
+
+.video-meta h2 {
+  margin: 0.5rem 0;
+}
+
+.stats {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.channel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.subscribe {
+  background: red;
+  color: white;
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.video-description {
+  margin-top: 1rem;
+  background: #1e1e1e;
+  max-width: auto;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.comment-side {
+  flex: 1;
+  max-width: 400px;
+}
+
+.comment-side h3 {
+  margin-bottom: 1rem;
+}
+
+.comment {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  background: #1a1a1a;
+  padding: 0.7rem;
+  border-radius: 6px;
+}
+
+.comment img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}

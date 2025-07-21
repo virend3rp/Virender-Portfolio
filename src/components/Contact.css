@@ -1,0 +1,254 @@
+:root {
+  --card-height: 280px;
+  --card-width: calc(var(--card-height) * 1.4);
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start; /* so cards don’t get pushed down */
+  gap: 40px;
+  padding: 2rem 1rem 3rem; /* add top & bottom spacing */
+  background: #000;
+  min-height: auto;
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+.card {
+  width: var(--card-width);
+  height: var(--card-height);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0 20px;
+  perspective: 2500px;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.3s ease;
+  border-radius: 18px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  border: 2px solid transparent;
+  animation: gradientMotion 10s ease infinite;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  background-size: 300% 300%;
+}
+
+.card.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Motion Gradient */
+@keyframes gradientMotion {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.card:hover {
+  transform: scale(1.04) rotateX(2deg) rotateY(2deg);
+}
+
+/* Brand glow border */
+.card:hover {
+  box-shadow: 0 0 15px 3px var(--glow);
+  border-color: var(--glow);
+}
+
+/* Shine Effect */
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--glow) 80%, transparent) 0%,
+    color-mix(in srgb, var(--glow) 30%, transparent) 50%,
+    color-mix(in srgb, var(--glow) 80%, transparent) 100%
+  );
+  transform: rotateZ(30deg) translate(-100%, -100%);
+  opacity: 0.1;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  animation: shine 1.5s ease forwards;
+}
+
+@keyframes shine {
+  0% {
+    transform: rotateZ(30deg) translate(-100%, -100%);
+    opacity: 0.15;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: rotateZ(30deg) translate(100%, 100%);
+    opacity: 0;
+  }
+}
+
+.wrapper {
+  transition: all 0.5s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(10%) brightness(0.9);
+  transition: 0.4s ease;
+}
+
+.card:hover .wrapper {
+  transform: perspective(900px) translateY(-5%) rotateX(15deg) translateZ(0);
+  box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+}
+
+.wrapper::before,
+.wrapper::after {
+  content: "";
+  opacity: 0;
+  width: 100%;
+  height: 80px;
+  transition: all 0.5s;
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+}
+
+.wrapper::before {
+  top: 0;
+  height: 100%;
+  background-image: linear-gradient(
+    to top,
+    transparent 46%,
+    rgba(0, 0, 0, 0.4) 68%,
+    rgba(0, 0, 0) 97%
+  );
+}
+
+.wrapper::after {
+  bottom: 0;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 46%,
+    rgba(0, 0, 0, 0.4) 68%,
+    rgba(0, 0, 0) 97%
+  );
+}
+
+.card:hover .wrapper::before,
+.card:hover .wrapper::after {
+  opacity: 1;
+}
+
+.card:hover .wrapper::after {
+  height: 120px;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  transition: transform 0.5s;
+  z-index: 1;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+.card:hover .title {
+  transform: translate3d(0%, -50px, 100px);
+}
+
+.character {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  opacity: 0;
+  transition: all 0.5s;
+  position: absolute;
+  bottom: 35%;
+  z-index: -1;
+}
+
+.card:hover .character {
+  opacity: 1;
+  transform: translate3d(0%, -30%, 100px);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  :root {
+    --card-height: 220px;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .character {
+    width: 48px;
+    height: 48px;
+  }
+
+  .card {
+    --card-width: 100%;
+    max-width: 90vw;
+  }
+}
+
+.contact-note {
+  text-align: center;
+  font-size: 2rem;
+  color: black;
+  margin: 2rem auto 1.5rem;
+  padding: 1.5rem 2rem;
+  background-color: beige;
+  border-radius: 50px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  width: fit-content;
+  max-width: 90%;
+  position: relative;
+  box-shadow: 4px 4px 0 #000;
+  border: 2px solid black;
+
+  animation: bounceIn 0.2s ease-out; /* 👈 add this line */
+}
+
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(20px);
+  }
+  80% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,117 @@
+.skills-section {
+  padding: 3rem 2rem;
+  background: #0a0a0a;
+  color: white;
+}
+
+.skills-category {
+  margin-bottom: 4rem;
+}
+
+.skills-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.skill-card {
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  box-shadow: 0 0 10px 1px transparent;
+  text-align: center;
+}
+
+.skill-card img {
+  width: 48px;
+  height: 48px;
+  transition: transform 0.3s ease;
+}
+
+.skill-card p {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #eee;
+}
+
+.skill-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px var(--glow);
+  border-color: var(--glow);
+}
+
+.subtext {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.cp-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.cp-card.wide {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  width: 500px;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 28px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 20px var(--glow, #fff);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  color: white;
+  text-decoration: none;
+}
+
+.cp-card.wide:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px var(--glow);
+  border-color: var(--glow);
+}
+
+.cp-left img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.cp-right h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.cp-right ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.cp-right ul li {
+  margin-bottom: 0.3rem;
+}

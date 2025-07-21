@@ -1,23 +1,22 @@
-import React from 'react';
-import HeroSection from './components/HeroSection';
-import AboutSection from './components/AboutSection';
-import ProjectsSection from './components/ProjectsSection';
-import SkillsSection from './components/SkillsSection';
-import TimelineSection from './components/TimelineSection';
-import ContactSection from './components/ContactSection';
-import LeetCodeStatsSection from "./components/LeetCodeStatsSection";
-
-
+import { Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import AboutPage from "./components/About";
+import HeroSection from "./components/HeroSection"; // Homepage
+import ProjectsPage from "./components/Projects"
+import SkillsPage from "./components/Skills";
+import ContactPage from "./components/Contact"
 function App() {
   return (
-    <main className="bg-white text-gray-900">
-      <HeroSection />
-      <AboutSection />
-      <ProjectsSection />
-      <SkillsSection />
-      <LeetCodeStatsSection /> {/* NEW SECTION */}
-      <ContactSection />
-    </main>
+    <>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HeroSection />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/skills" element={<SkillsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+    </>
   );
 }
 
