@@ -1,6 +1,6 @@
 .project-grid-container {
   padding: 4rem 2rem;
-  background-color: #0a0a0a;
+  background: black;
   min-height: 100vh;
   font-family: 'Segoe UI', 'Roboto', sans-serif;
   display: flex;
@@ -30,7 +30,7 @@
 
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+  box-shadow: 0 0 20px rgba(229, 255, 0, 0.4);
 }
 
 .overlay {

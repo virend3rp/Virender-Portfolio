@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Skills.css';
 
-const CACHE_DURATION = 1000 * 60 * 60; // 1 hour
+const CACHE_DURATION = 1000 * 60; // 1 hour
 
 const Skills = () => {
   const [cpProfiles, setCpProfiles] = useState([]);

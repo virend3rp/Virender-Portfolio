@@ -10,7 +10,7 @@
   align-items: flex-start; /* so cards don’t get pushed down */
   gap: 40px;
   padding: 2rem 1rem 3rem; /* add top & bottom spacing */
-  background: #000;
+  background: black;
   min-height: auto;
   position: relative;
   overflow-x: hidden;
