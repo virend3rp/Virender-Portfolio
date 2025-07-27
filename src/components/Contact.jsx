@@ -1,40 +1,38 @@
 import React, { useEffect, useRef } from 'react';
 import './Contact.css';
 
+// The 'glow' property is now removed, as it will be handled by CSS for consistency.
 const contacts = [
   {
     href: 'mailto:viruwork1@gmail.com',
     image: 'https://cdn-icons-png.flaticon.com/512/732/732200.png',
     title: 'Email',
     character: 'https://img.icons8.com/emoji/96/e-mail.png',
-    glow: '#EA4335',
   },
   {
     href: 'https://www.linkedin.com/in/virender-parasariya-8320631b6/',
     image: 'https://cdn-icons-png.flaticon.com/512/174/174857.png',
     title: 'LinkedIn',
     character: 'https://img.icons8.com/3d-fluency/94/linkedin--v1.png',
-    glow: '#0A66C2',
   },
   {
     href: 'https://github.com/virend3rp',
     image: 'https://cdn-icons-png.flaticon.com/512/733/733553.png',
     title: 'GitHub',
     character: 'https://img.icons8.com/3d-fluency/94/github.png',
-    glow: 'purple',
   },
   {
     href: 'https://www.youtube.com/@virenderparasariya',
     image: 'https://cdn-icons-png.flaticon.com/512/1384/1384060.png',
     title: 'YouTube',
     character: 'https://img.icons8.com/3d-fluency/94/youtube-play.png',
-    glow: '#FF0000',
   },
 ];
 
 const Contact = () => {
   const containerRef = useRef(null);
 
+  // This effect adds an animation class when the cards scroll into view.
   useEffect(() => {
     const observer = new IntersectionObserver(
       entries => {
@@ -54,23 +52,22 @@ const Contact = () => {
   }, []);
 
   return (
-    <>
-      <div className="contact-note">
-        You can contact me here or not — it's free will.
-      </div>
+    <div className="contact-section-container">
+      <h1 className="contact-title">Get In Touch</h1>
+      <p className="contact-note">
+        You can reach out to me here, or not — it's free will.
+      </p>
 
-      <div className="contact-container" ref={containerRef}>
+      <div className="contact-grid" ref={containerRef}>
         {contacts.map((contact, index) => (
           <a
             href={contact.href}
             target="_blank"
             rel="noopener noreferrer"
             key={index}
+            className="card-link"
           >
-            <div
-              className="card"
-              style={{ '--glow': contact.glow }}
-            >
+            <div className="card">
               <div className="wrapper">
                 <img
                   src={contact.image}
@@ -78,7 +75,7 @@ const Contact = () => {
                   className="cover-image"
                 />
               </div>
-              <div className="title">{contact.title}</div>
+              <div className="card-title">{contact.title}</div>
               <img
                 src={contact.character}
                 alt={`${contact.title} Icon`}
@@ -88,7 +85,7 @@ const Contact = () => {
           </a>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,9 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./About.css";
 
-const About = () => {
-  const images = ["/pic-1.JPG", "/pic-3.jpg"];
+const images = ["/pic-1.JPG", "/pic-3.jpg"];
 
+const comments = [
+  {
+    name: "SnackOverflow",
+    avatar: "https://i.pravatar.cc/40?img=10",
+    text: "I came for the code, stayed for the sarcasm.",
+  },
+  {
+    name: "404NotAFan",
+    avatar: "https://i.pravatar.cc/40?img=22",
+    text: "Feels like Deadpool accidentally majored in Civil Engg.",
+  },
+  {
+    name: "DebuggerMom",
+    avatar: "https://i.pravatar.cc/40?img=2",
+    text: "He explained pull requests to me. Still confused, but proud.",
+  },
+  {
+    name: "LazyCricketer_69",
+    avatar: "https://i.pravatar.cc/40?img=3",
+    text: "DSA + Cricket + coffee = this guy’s blood type.",
+  },
+  {
+    name: "VSCodeWhisperer",
+    avatar: "https://i.pravatar.cc/40?img=5",
+    text: "He doesn’t write bugs. He writes plot twists.",
+  },
+];
+
+const About = () => {
   const [likes, setLikes] = useState(() => {
     const saved = localStorage.getItem("likeCount");
     return saved ? parseInt(saved, 10) : 0;
@@ -27,80 +55,42 @@ const About = () => {
     alert("🚫 Action not allowed. This button has trust issues.");
   };
 
-  const comments = [
-    {
-      name: "SnackOverflow",
-      avatar: "https://i.pravatar.cc/40?img=10",
-      text: "I came for the code, stayed for the sarcasm.",
-    },
-    {
-      name: "404NotAFan",
-      avatar: "https://i.pravatar.cc/40?img=22",
-      text: "Feels like Deadpool accidentally majored in Civil Engg.",
-    },
-    {
-      name: "DebuggerMom",
-      avatar: "https://i.pravatar.cc/40?img=2",
-      text: "He explained pull requests to me. Still confused, but proud.",
-    },
-    {
-      name: "LazyCricketer_69",
-      avatar: "https://i.pravatar.cc/40?img=3",
-      text: "DSA + Cricket + coffee = this guy’s blood type.",
-    },
-    {
-      name: "VSCodeWhisperer",
-      avatar: "https://i.pravatar.cc/40?img=5",
-      text: "He doesn’t write bugs. He writes plot twists.",
-    },
-  ];
-
   return (
-    <div className="about-youtube-layout">
-      <div className="video-section">
-        <div className="video-player">
-          <div className="slideshow">
-            {images.map((img, i) => (
-              <img
-                src={img}
-                alt={`slide-${i}`}
-                className="slide"
-                key={i}
-                style={{ animationDelay: `${i * 4}s` }}
-              />
-            ))}
-          </div>
-          <div className="play-button">▶</div>
+    <main className="about-container">
+      <section className="photo-slideshow">
+        {images.map((img, i) => (
+          <img
+            key={i}
+            src={img}
+            alt={`Virender Parasariya slide ${i + 1}`}
+            className="slide"
+            style={{ animationDelay: `${i * 6}s` }}
+          />
+        ))}
+      </section>
+
+      <section className="intro-section">
+        <h1>Virender Parasariya</h1>
+        <p className="role">Software Engineer & Sarcasm Enthusiast</p>
+
+        <div className="buttons-row">
+          <button
+            onClick={handleLike}
+            disabled={hasLiked}
+            aria-pressed={hasLiked}
+            aria-label="Like"
+          >
+            👍 {likes}
+          </button>
+          <button onClick={handleDislike} aria-label="Dislike">
+            👎
+          </button>
+          <a href="/Virender_Development_Resume.pdf" download className="resume-link">
+            📄 Resume
+          </a>
         </div>
 
-        <div className="video-actions">
-          <div className="left-controls">
-            <button onClick={handleLike}>👍 {likes}</button>
-            <button onClick={handleDislike}>👎</button>
-            <button>🔗 Share</button>
-            <button>
-              <a
-                href="/Virender_Development_Resume.pdf"
-                download
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                📄 Resume
-              </a>
-            </button>
-          </div>
-        </div>
-
-        <div className="video-meta">
-          <h2>I'm Virender Parasariya— Not Your Average  Engineer</h2>
-          <div className="stats">1,234,567 views • Uploaded just now</div>
-          <div className="channel">
-            @virender.codes
-            <button className="subscribe">Subscribed ✓</button>
-          </div>
-        </div>
-
-        <div className="video-description">
-          <strong>📌 Description:</strong>
+        <article className="about-text">
           <p>
             🎓 Went to IIT Jodhpur to study Civil Engineering. Because obviously, concrete is the gateway drug to JavaScript.
           </p>
@@ -117,22 +107,22 @@ const About = () => {
           <p>
             Smash that Subscribe button. Or don’t. But I’ll know.
           </p>
-        </div>
-      </div>
+        </article>
+      </section>
 
-      <div className="comment-side">
-        <h3>Top Comments</h3>
+      <section className="comments-section" aria-label="Top comments">
+        <h2>Top Comments</h2>
         {comments.map((c, i) => (
           <div className="comment" key={i}>
-            <img src={c.avatar} alt="avatar" />
+            <img src={c.avatar} alt={`${c.name} avatar`} />
             <div>
               <strong>{c.name}</strong>
               <p>{c.text}</p>
             </div>
           </div>
         ))}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 
