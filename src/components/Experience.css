@@ -1,0 +1,186 @@
+/* --- "THE PROFESSIONAL TIMELINE" STYLE --- */
+
+/* 1. System & Variables */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+:root {
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --color-background: #FFFFFF;
+  --color-text-primary: #212529;
+  --color-text-secondary: #6c757d;
+  --color-accent: magenta;
+  --color-border: #e9ecef;
+  --color-tag-bg: #f8f9fa;
+}
+
+/* 2. Page & Header Layout */
+.experience-section {
+  font-family: var(--font-primary);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.experience-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.experience-header h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.experience-header p {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 3. The Timeline Structure */
+.timeline {
+  position: relative;
+  /* The vertical line is created using a pseudo-element on the parent */
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 10px; /* Start slightly below the top */
+  bottom: 10px; /* End slightly above the bottom */
+  left: 20px; /* Position on the left for mobile */
+  width: 2px;
+  background-color: var(--color-border);
+}
+
+/* 4. Timeline Entry (Each Job) */
+.timeline-entry {
+  position: relative;
+  margin-bottom: 3rem; /* Space between jobs */
+}
+
+/* On the last entry, remove the bottom margin */
+.timeline-entry:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-meta {
+  display: none; /* Hidden on mobile, shown on desktop */
+}
+
+.timeline-content {
+  padding-left: 50px; /* Space for the timeline line and point */
+}
+
+/* 5. The Timeline Point (Circle) */
+.timeline-point {
+  position: absolute;
+  top: 5px; /* Align with text */
+  left: 13px; /* Center it on the 2px line */
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-background);
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+}
+
+/* 6. Content Styling */
+.job-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+}
+
+.job-company a {
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.job-company a:hover {
+  text-decoration: underline;
+}
+
+.job-location {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.job-accomplishments {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.job-accomplishments li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+/* Custom bullet point for a cleaner look */
+.job-accomplishments li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+/* 7. Skill Tags */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.skill-tag {
+  background-color: var(--color-tag-bg);
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+}
+
+/* 8. Desktop Layout (The Asymmetrical Grid) */
+@media (min-width: 768px) {
+  .timeline::before {
+    left: 150px; /* Move the line to the division point */
+  }
+
+  .timeline-entry {
+    display: grid;
+    grid-template-columns: 150px 1fr; /* Left: 150px, Right: the rest */
+    gap: 2rem;
+  }
+  
+  .timeline-meta {
+    display: block;
+    text-align: right;
+    padding-right: 2rem;
+  }
+
+  .timeline-date {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  .timeline-content {
+    padding-left: 0;
+  }
+
+  .timeline-point {
+    left: -2.7rem; /* Position the point relative to the content block */
+    top: 5px;
+  }
+}
