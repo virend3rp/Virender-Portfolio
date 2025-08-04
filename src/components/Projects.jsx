@@ -36,14 +36,15 @@ const projects = [
     github: "https://github.com/virend3rp/Budget-Flow",
   },
   {
-    id: "Chat-app",
-    title: "Chatterbox",
-    description: "A messaging app to talk to myself.",
-    thumbnail: "/make-our-removebg-preview.png",
-    tech: ["Socket.IO", "React", "Nodejs", "JWT"],
+    id: "Lore-drop",
+    title: "Lore-Drop",
+    description: "An interactive digital museum archiving niche internet history and memes",
+    thumbnail: "/LoreDrop.png",
+    tech: ["React", "Express", "PostgreSQL", "Node.js", "SupaBase"],
     year: "2025",
-    longDescription: "The primary challenge was to architect a system that could ensure high availability and maintain low latency under heavy, unpredictable traffic. This was achieved using Go for performance, with Docker and Kubernetes for container orchestration. The gateway now processes over 1 million requests per day with 99.99% uptime.",
-    github: "https://github.com/virend3rp/ChatterBox",
+    longDescription: "Building an editorial-style frontend with dynamic exhibit showcases required careful coordination between content structure and UI responsiveness. Managing user-submitted lore with moderation tools via an admin panel posed architectural challenges. LoreDrop now hosts over 100 artifacts and serves as a playful, educational archive of internet culture.",
+    link: "https://lore-drop.vercel.app/",
+    github: "https://github.com/virend3rp/LoreDrop",
   },
 ];
 
