@@ -89,7 +89,7 @@ body {
 /* Card */
 .rational-card {
   background: var(--color-bg);
-  border: 1px solid var(--color-border);
+  border: 2px solid black;
   border-radius: 12px;
   cursor: pointer;
   outline-offset: 4px;
