@@ -57,133 +57,100 @@ const projects = [
     link: "/",
     github: "https://github.com/virend3rp/Virender-Portfolio",
   },
+  
 ];
 
-
-// Extract unique years sorted descending (most recent first)
-const allYears = Array.from(new Set(projects.map((p) => p.year))).sort(
-  (a, b) => b.localeCompare(a)
-);
+const totalProjects = projects.length;
 
 const Projects = () => {
   const [expandedId, setExpandedId] = useState(null);
-  const [filterYear, setFilterYear] = useState(null);
-
-  const filteredProjects = useMemo(() => {
-    if (!filterYear) return projects;
-    return projects.filter((project) => project.year === filterYear);
-  }, [filterYear]);
-
-  const toggleExpand = (id) => {
-    setExpandedId((prev) => (prev === id ? null : id));
-  };
+  const toggleExpand = (id) => setExpandedId((prev) => (prev === id ? null : id));
 
   return (
-    <div className="rational-container">
-      <h1 className="page-title">Selected Works</h1>
-
-      {/* Year Filter Toolbar */}
-      <div
-        className="filter-toolbar"
-        role="toolbar"
-        aria-label="Filter projects by year"
-      >
-        <button
-          className={`filter-btn ${filterYear === null ? "active" : ""}`}
-          onClick={() => setFilterYear(null)}
-          aria-pressed={filterYear === null}
-        >
-          All
-        </button>
-        {allYears.map((year) => (
-          <button
-            key={year}
-            className={`filter-btn ${filterYear === year ? "active" : ""}`}
-            onClick={() => setFilterYear(year)}
-            aria-pressed={filterYear === year}
-          >
-            {year}
-          </button>
-        ))}
+    <div className="playlist-container">
+      {/* Header */}
+      <div className="playlist-header">
+        <img src="/portfolio-photo.jpg" alt="Profile" className="playlist-cover" />
+        <div className="playlist-info">
+          <p className="playlist-type">Private Playlist</p>
+          <h1 className="playlist-title">Selected Works</h1>
+          <p className="playlist-meta">
+            Virender • {totalProjects} projects • 2024–2025
+          </p>
+        </div>
       </div>
 
-      {filteredProjects.length === 0 ? (
-        <div className="no-projects-message" role="alert">
-          No projects found for this year. Try clearing filters.
-        </div>
-      ) : (
-        <div className="rational-grid" role="list">
-          {filteredProjects.map((project) => {
-            const isExpanded = expandedId === project.id;
+      {/* Table Head */}
+      <div className="playlist-table-head">
+        <span>#</span>
+        <span>Title</span>
+        <span>Tech</span>
+        <span>Year</span>
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 3.293l4.146 4.147-.708.707L8.5 4.707V13.5h-1V4.707L4.562 8.146l-.708-.707L8 3.293z"/>
+          </svg>
+        </span>
+      </div>
 
-            return (
+      {/* Table Body */}
+      <div className="playlist-table-body">
+        {projects.map((project, index) => {
+          const isExpanded = expandedId === project.id;
+          return (
+            <div key={project.id} className="playlist-row">
               <div
-                key={project.id}
-                className={`rational-card ${isExpanded ? "expanded" : ""}`}
-                tabIndex={0}
-                role="button"
-                aria-expanded={isExpanded}
-                aria-controls={`details-${project.id}`}
+                className={`playlist-row-main ${isExpanded ? "expanded" : ""}`}
                 onClick={() => toggleExpand(project.id)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    toggleExpand(project.id);
-                  }
-                }}
               >
-                <img src={project.thumbnail} alt={`${project.title} thumbnail`} className="card-thumbnail" />
-                <div className="card-content-wrapper">
-                  <div className="rational-card-header">
-                    <h2>{project.title}</h2>
-                    <span className="year">{project.year}</span>
-                  </div>
-                  <p className="rational-description">{project.description}</p>
-                  <ul className="tech-list">
-                    {(isExpanded ? project.tech : project.tech.slice(0, 4)).map((tech) => (
-                      <li key={tech}>{tech}</li>
-                    ))}
-                    {project.tech.length > 4 && !isExpanded && <li>+ more</li>}
-                  </ul>
+                <div className="playlist-index">
+                  <span className="track-number">{index + 1}</span>
+                  <button className="play-button" onClick={(e) => e.stopPropagation()}>
+                    ▶
+                  </button>
+                </div>
 
-                  <div
-                    id={`details-${project.id}`}
-                    className="expanded-details"
-                    aria-hidden={!isExpanded}
-                  >
-                    <p>
-                      <strong>Role:</strong> {project.role}
-                    </p>
-                    <p>{project.longDescription}</p>
-                    <div className="modal-links">
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="primary-link"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                        Live Project
-                      </a>
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="primary-link"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        GitHub
-                      </a>
-                    </div>
+                <div className="playlist-title-cell">
+                  <img
+                    src={project.thumbnail}
+                    alt={project.title}
+                    className="playlist-thumbnail"
+                  />
+                  <div>
+                    <p className="project-title">{project.title}</p>
+                    <p className="project-desc">{project.description}</p>
                   </div>
                 </div>
+
+                <span className="playlist-tech">
+                  {project.tech.slice(0, 3).join(", ")}
+                  {project.tech.length > 3 && " +more"}
+                </span>
+
+                <span>{project.year}</span>
+
+                <span className="playlist-duration">
+                  {`${2 + index}:${(10 + index * 5) % 60}`.padStart(4, "0")}
+                </span>
               </div>
-            );
-          })}
-        </div>
-      )}
+
+              {isExpanded && (
+                <div className="playlist-expanded">
+                  <p>{project.longDescription}</p>
+                  <div className="playlist-links">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                      Live Project
+                    </a>
+                    <a href={project.github} target="_blank" rel="noopener noreferrer">
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

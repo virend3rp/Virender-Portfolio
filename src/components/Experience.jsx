@@ -1,7 +1,6 @@
 import React from 'react';
 import './Experience.css';
 
-// --- Data Layer ---
 const experienceData = [
   {
     id: 1,
@@ -11,8 +10,9 @@ const experienceData = [
     companyLink: '#',
     title: 'Data Analyst',
     location: 'Remote, Based out of India',
-    description: 'Working in the data analysis department helping companies with AI powered traffic solutions',
-    skills: ['Python', 'SQL', 'Traffic Analysis', 'Microsoft Excel', 'POWERBI'],
+    description:
+      'Working in the data analysis department helping companies with AI-powered traffic solutions.',
+    skills: ['Python', 'SQL', 'Traffic Analysis', 'Microsoft Excel', 'Power BI'],
   },
 ];
 
@@ -21,7 +21,10 @@ const Experience = () => {
     <section className="experience-section">
       <header className="experience-header">
         <h1>Professional Experience</h1>
-        <p>My career journey, focused on building learning and working on impactful products.</p>
+        <p>
+          My career journey, focused on continuous learning and contributing to
+          impactful products.
+        </p>
       </header>
 
       <div className="timeline">
@@ -31,13 +34,17 @@ const Experience = () => {
               <span className="timeline-date">{`${job.startDate} – ${job.endDate}`}</span>
             </div>
 
-            <div className="timeline-content">
+            <div className="timeline-content job-card">
               <div className="timeline-point"></div>
               <h3 className="job-title">
                 {job.title}
                 <span className="job-company">
                   {' @ '}
-                  <a href={job.companyLink} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={job.companyLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {job.company}
                   </a>
                 </span>
@@ -47,7 +54,9 @@ const Experience = () => {
 
               <div className="skill-tags">
                 {job.skills.map((skill) => (
-                  <span key={skill} className="skill-tag">{skill}</span>
+                  <span key={skill} className="skill-tag">
+                    {skill}
+                  </span>
                 ))}
               </div>
             </div>

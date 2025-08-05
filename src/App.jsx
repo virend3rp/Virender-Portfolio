@@ -6,6 +6,7 @@ import Projects from "./components/Projects"
 import SkillsPage from "./components/Skills";
 import ContactPage from "./components/Contact"
 import Experience from "./components/Experience";
+import FooterContact from "./components/FooterContact";
 function App() {
   return (
     <>
@@ -16,8 +17,8 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/experience" element={<Experience/>}/>
         <Route path="/skills" element={<SkillsPage />} />
-        <Route path="/contact" element={<ContactPage />} />
       </Routes>
+      <FooterContact/>
     </>
   );
 }
