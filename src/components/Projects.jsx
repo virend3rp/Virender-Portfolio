@@ -6,7 +6,7 @@ const projects = [
     id: "url-shortener",
     title: "URL Shortener",
     description: "A full-stack URL shortener with caching and analytics.",
-    thumbnail: "/urlshortner.png", // 👈 add a thumbnail screenshot to your /public folder
+    thumbnail: "/logo-url.png", // 👈 add a thumbnail screenshot to your /public folder
     tech: ["React", "Node.js", "Express", "PostgreSQL", "Redis", "RabbitMQ", "Railway", "Vercel"],
     year: "2025",
     longDescription:
