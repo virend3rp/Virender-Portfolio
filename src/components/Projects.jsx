@@ -3,6 +3,18 @@ import "./Projects.css";
 
 const projects = [
   {
+    id: "url-shortener",
+    title: "URL Shortener",
+    description: "A full-stack URL shortener with caching and analytics.",
+    thumbnail: "/urlshortner.png", // 👈 add a thumbnail screenshot to your /public folder
+    tech: ["React", "Node.js", "Express", "PostgreSQL", "Redis", "RabbitMQ", "Railway", "Vercel"],
+    year: "2025",
+    longDescription:
+      "Built a production-ready short link generator from scratch. PostgreSQL keeps the data, Redis handles blazing-fast caching, and RabbitMQ powers click analytics. Authentication secured with JWT. Deployed on Railway (backend + analytics) and Vercel (frontend). Basically, bit.ly — but homemade.",
+    link: "https://url-shortner-tawny-tau.vercel.app/",
+    github: "https://github.com/virend3rp/URL_SHORTNER",
+  },
+  {
     id: "cinebrain",
     title: "CineBrain",
     description: "An AI-powered film recommender. Like Netflix... but actually listens to you.",
@@ -16,7 +28,7 @@ const projects = [
   {
     id: "orderly",
     title: "Orderly",
-    description: "Full‑stack restaurant ops manager. Keeps kitchens chaos-free (ish).",
+    description: "Full-stack restaurant ops manager. Keeps kitchens chaos-free (ish).",
     thumbnail: "/orderly-logo.png",
     tech: ["React", "Node.js", "Express", "PostgreSQL", "Supabase"],
     year: "2025",
@@ -46,7 +58,7 @@ const projects = [
     link: "https://lore-drop.vercel.app/",
     github: "https://github.com/virend3rp/LoreDrop",
   },
-    {
+  {
     id: "portfolio",
     title: "Personal Portfolio",
     description: "Minimal. Expressive. Basically me, but in website form.",
@@ -57,7 +69,6 @@ const projects = [
     link: "/",
     github: "https://github.com/virend3rp/Virender-Portfolio",
   },
-  
 ];
 
 const totalProjects = projects.length;
